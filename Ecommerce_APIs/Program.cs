@@ -1,3 +1,4 @@
+using Ecommerce.BL;
 using Ecommerce.DAL;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,6 +13,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<EcommerecContext>(options => options
 .UseSqlServer(builder.Configuration.GetConnectionString("EcommerceDB")));
 builder.Services.AddScoped<IProductRepo, ProductRepo>();
+builder.Services.AddScoped<IProductManager, ProductManager>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

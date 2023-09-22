@@ -1,4 +1,6 @@
-﻿namespace Ecommerce.DAL;
+﻿using Microsoft.EntityFrameworkCore;
+
+namespace Ecommerce.DAL;
 
 public class ProductRepo : IProductRepo
 {
@@ -10,6 +12,6 @@ public class ProductRepo : IProductRepo
     }
     public List<Product> GetAllByCategoryId(int categoryId)
     {
-       return context.Set<Product>().Where(p => p.CategoryId == categoryId).ToList();
+       return context.Set<Product>().Where(p => p.CategoryId == categoryId).Include(p=>p.Category).ToList();
     }
 }
