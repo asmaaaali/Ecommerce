@@ -14,6 +14,8 @@ builder.Services.AddDbContext<EcommerecContext>(options => options
 .UseSqlServer(builder.Configuration.GetConnectionString("EcommerceDB")));
 builder.Services.AddScoped<IProductRepo, ProductRepo>();
 builder.Services.AddScoped<IProductManager, ProductManager>();
+builder.Services.AddScoped<ICategoryRepo, CategoryRepo>();
+builder.Services.AddScoped<ICategoryManager, CategoryManager>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

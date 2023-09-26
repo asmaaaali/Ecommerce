@@ -10,8 +10,19 @@ public class ProductRepo : IProductRepo
     {
         this.context = context;
     }
+
+    public void Add(Product product)
+    {
+        context.Set<Product>().Add(product);
+    }
+
     public List<Product> GetAllByCategoryId(int categoryId)
     {
        return context.Set<Product>().Where(p => p.CategoryId == categoryId).Include(p=>p.Category).ToList();
+    }
+
+    public int SaveChanges()
+    {
+        return context.SaveChanges();
     }
 }

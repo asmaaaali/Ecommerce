@@ -1,0 +1,23 @@
+﻿using Ecommerce.BL;
+using Ecommerce.DTOs;
+using Microsoft.AspNetCore.Mvc;
+
+namespace Ecommerce.APIs;
+
+[Route("api/[controller]")]
+[ApiController]
+public class ProductController : ControllerBase
+{
+    private readonly IProductManager manager;
+
+    public ProductController(IProductManager manager)
+    {
+        this.manager = manager;
+    }
+    [HttpGet]
+    [Route("Category/{categoryId}")]
+    public ActionResult<List<ProductReadDto>> GetProductsByCategory(int categoryId)
+    {
+        return manager.GetProductsByCategoryId(categoryId);
+    }
+}

@@ -4,5 +4,7 @@ namespace Ecommerce.BL;
 
 public interface IProductManager
 {
-    List<ProductReadDto> products(int id);
+    List<ProductReadDto> GetProductsByCategoryId(int id);
+    void Add(ProductAddDto product);
+    
 }
