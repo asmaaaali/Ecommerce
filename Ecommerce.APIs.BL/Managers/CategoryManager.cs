@@ -11,6 +11,17 @@ public class CategoryManager : ICategoryManager
     {
         this.repo = repo;
     }
+
+    public void Add(CategoryAddDto categoryAddDto)
+    {
+       var dbCategory = new Category
+        {
+            Name = categoryAddDto.Name,
+        };
+         repo.Add(dbCategory);
+         repo.SaveChanges();
+    }
+
     public List<CategoryWithProductReadDto> GetAllCategoryWithProduct()
     {
        var CategoryDb= repo.GetCategoriesWithProducts();

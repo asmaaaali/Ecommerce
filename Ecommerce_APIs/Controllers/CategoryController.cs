@@ -20,4 +20,12 @@ public class CategoryController : ControllerBase
     {
         return manager.GetAllCategoryWithProduct();
     }
+
+    [HttpPost]
+    public ActionResult Add(CategoryAddDto categoryAddDto)
+    {
+        manager.Add(categoryAddDto);
+        return StatusCode(StatusCodes.Status201Created);
+
+    }
 }

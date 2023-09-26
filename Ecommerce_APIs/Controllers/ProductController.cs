@@ -20,4 +20,11 @@ public class ProductController : ControllerBase
     {
         return manager.GetProductsByCategoryId(categoryId);
     }
+
+    [HttpPost]
+    public ActionResult Add(ProductAddDto product)
+    {
+         manager.Add(product);
+        return StatusCode(StatusCodes.Status201Created);
+    }
 }

@@ -10,8 +10,19 @@ public class CategoryRepo : ICategoryRepo
     {
         this.context = context;
     }
+
+    public void Add(Category category)
+    {
+       context.Add(category);
+    }
+
     public List<Category> GetCategoriesWithProducts()
     {
         return context.Categories.Include(c => c.Products).ToList();
+    }
+
+    public int SaveChanges()
+    {
+        return context.SaveChanges();
     }
 }
