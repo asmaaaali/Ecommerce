@@ -27,4 +27,18 @@ public class ProductController : ControllerBase
          manager.Add(product);
         return StatusCode(StatusCodes.Status201Created);
     }
+
+    [HttpPut]
+    public ActionResult Update(ProductUpdateDto product)
+    {
+        manager.Update(product);
+        return NoContent();
+    }
+    [HttpDelete]
+    [Route("{id}")]
+    public ActionResult Delete(int id)
+    {
+        manager.Delete(id);
+        return NoContent();
+    }
 }

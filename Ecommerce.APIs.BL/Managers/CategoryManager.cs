@@ -22,6 +22,16 @@ public class CategoryManager : ICategoryManager
          repo.SaveChanges();
     }
 
+    public void Delete(int id)
+    {
+       var CatToDelete=repo.GetById(id);
+        if (CatToDelete is null)
+        {
+            return;
+        }
+        repo.Delete(CatToDelete);
+    }
+
     public List<CategoryWithProductReadDto> GetAllCategoryWithProduct()
     {
        var CategoryDb= repo.GetCategoriesWithProducts();
@@ -32,4 +42,17 @@ public class CategoryManager : ICategoryManager
             c.Products.Select(p => new ProductChildDto(p.Id, p.Name)).ToList()
             )).ToList();
     }
+
+    public void Update(CategoryUpdateDto categoryUpdateDto)
+    {
+        var dbCategory = repo.GetById(categoryUpdateDto.CategoryId);
+        if (dbCategory is null)
+        {
+            return;
+        }
+        dbCategory.Name= categoryUpdateDto.Name;
+        repo.Update(dbCategory);
+        repo.SaveChanges();
+    }
+
 }

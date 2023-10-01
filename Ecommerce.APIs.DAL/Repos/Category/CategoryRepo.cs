@@ -16,6 +16,16 @@ public class CategoryRepo : ICategoryRepo
        context.Add(category);
     }
 
+    public void Delete(Category category)
+    {
+        context.Set<Category>().Remove(category);
+    }
+
+    public Category? GetById(int id)
+    {
+        return context.Set<Category>().Find(id);
+    }
+
     public List<Category> GetCategoriesWithProducts()
     {
         return context.Categories.Include(c => c.Products).ToList();
@@ -24,5 +34,10 @@ public class CategoryRepo : ICategoryRepo
     public int SaveChanges()
     {
         return context.SaveChanges();
+    }
+
+    public void Update(Category category)
+    {
+        
     }
 }

@@ -28,4 +28,16 @@ public class CategoryController : ControllerBase
         return StatusCode(StatusCodes.Status201Created);
 
     }
+    [HttpPut]
+    public ActionResult Update(CategoryUpdateDto categoryUpdateDto)
+    {
+        manager.Update(categoryUpdateDto);
+        return NoContent();
+    }
+    [HttpDelete]
+    [Route("{id}")]
+    public ActionResult Delete(int id) {
+        manager.Delete(id);
+        return NoContent();
+    }
 }
