@@ -1,5 +1,6 @@
 using Ecommerce.BL;
 using Ecommerce.DAL;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -16,6 +17,8 @@ builder.Services.AddScoped<IProductRepo, ProductRepo>();
 builder.Services.AddScoped<IProductManager, ProductManager>();
 builder.Services.AddScoped<ICategoryRepo, CategoryRepo>();
 builder.Services.AddScoped<ICategoryManager, CategoryManager>();
+builder.Services.AddIdentity<Customer, IdentityRole>()
+    .AddEntityFrameworkStores<EcommerecContext>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

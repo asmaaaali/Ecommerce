@@ -1,9 +1,10 @@
 ﻿
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace Ecommerce.DAL;
 
-public class EcommerecContext : DbContext
+public class EcommerecContext : IdentityDbContext<Customer>
 {
 
     public DbSet<Product> Products => Set<Product>();
