@@ -1,5 +1,6 @@
 ﻿using Ecommerce.BL;
 using Ecommerce.DTOs;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Ecommerce.APIs;
@@ -16,6 +17,7 @@ public class ProductController : ControllerBase
     }
     [HttpGet]
     [Route("Category/{categoryId}")]
+    [Authorize]
     public ActionResult<List<ProductReadDto>> GetProductsByCategory(int categoryId)
     {
         return manager.GetProductsByCategoryId(categoryId);
